@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+          <meta charset="utf-8">
+          <title>Dashboard</title>
+          <link rel="stylesheet" href="sidebar-dashboard.css"> 
+        
+          <link rel='stylesheet' href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta http-equiv="X-UA-Compatible" content="ie=edge">
+          <title>AV Tracker - Dashboard</title>       
+  </head>
+   <body>       
+          
+    <input type="checkbox" id='check'>
+    <!--Header area starts here-->
+           <header>
+   
+                <label for="check">
+                    <i class = "fas fa-bars" id = "sidebar_btn"> </i>
+                </label>
+   
+              
+                  <div class="logo">
+                     <img src="images/img.jpg" alt="" height="#" width="#">
+                  </div>
+               
+   
+                <div class = "right_area">
+                     <a href ='#' class = 'logout_btn'> Logout </a>
+                </div>
+   
+           </header>
+   
+    <!--header area ends here-->
+    <!--side-bar starts here-->
+           <div class = "sidebar">
+                    
+                   <div class = "profile">
+                       <img src="images/User.jpeg" class = "profile_image" alt="" width="120" height="120">
+                       <h4><p>User Name</p></h4>
+                   </div>
+   
+                   <ul class="navbar-nav">
+                       <li class="nav-item"><a href="#" ><div class="fas fa-desktop" style="user-select:auto;"></div><span> Dashboard </span></a></li>
+                       <li class="nav-item"><a href="#" ><div class="fas fa-table" style="user-select:auto;"></div><span> Tables </span></a></li>
+                   </ul>
+                   
+                   <div class="line" id="hide" >
+                       <div class="container">
+                           <h3>On / Off</h3>
+                           <label class="switch" onclick="startStp_onoff(); stp()" id="stop">
+                                   <input type="checkbox" >   
+                               <span class="slider round"  onclick="settimer(); opentog()" id="tog1-btn"></span>
+                           </label>
+                       </div>
+                   </div>
+   
+                   <div class="line" id="open" style="display:none">
+                       <div class="container">
+                           <h3>Pause / Resume</h3>
+                           <label class="switchs2" onclick="startStp_paures()">
+                                   <input type="checkbox" >
+                                   <span class="sliders2 round" onclick="settimer(); hidebtn()" id="tog2-btn"></span>
+                           </label>
+                       </div>
+                   </div>
+   
+                   <div class="container">
+                       <div id="display">
+                           00:00:00
+                       </div>
+                       <div id="display1">
+                       </div>
+                       <div class="buttons" hidden>
+                           <button id="startStop" onclick="startStp_onoff()">Start</button> 
+                       </div>  
+                   </div>     
+           </div>
+
+ <!--side-bar ends here-->
+ <!--dashboard-->
+ <div class="col-lg-2">
+<div class="content" >
+           <h2>Working & break hours of the selected date:</h2>
+
+        <input type="date" id="myDate" value="YEAR-MM-DD">
+        <button onclick="myFunction()">submit</button>
+    
+        <script>
+            function myFunction() {
+            var x = document.getElementById("myDate").value;
+            document.getElementById("demo").innerHTML = x;
+            }
+        </script>
+     </div>
+
+   <h2>Total activity blocks of Developers</h2>
+   <p></p> 
+   <div class="col-lg-10">
+    <div class="row">
+       <div class="column">
+          <div class="card">
+           <h3 style="color:white">Total hours of Working</h3>
+           <p id="demo" style="color:white"></p>     
+           <p style="color:rgb(187, 184, 184);">07:24:15</p>
+         </div>
+       </div>
+
+       <div class="column">
+          <div class="card2">
+           <h3 style="color:white">Total hours of Break</h3>
+           <p id="demo" style="color:white"></p>     
+           <p style="color:rgb(187, 184, 184);">01:11:00</p>
+          </div>
+       </div>
+  
+       <div class="column">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="ss.png" alt="screenshot" style="width:300px;height:180px;">
+              </div>
+              <div class="flip-card-back">
+                 <h3 style="color:rgb(187, 184, 184);">Screenshot of the day</h3> 
+                   <p style="color:rgb(187, 184, 184);">Image title</p> 
+                 <button class="btn"><p>View more</p></button>
+              </div>
+           
+            </div>
+          </div>
+       </div>
+   </div>
+   </div>
+<br>
+<h2> Developer's time spent of the day</h2>
+
+
+<div class="col-6 col-md-4">
+<div id="piechart" class="pie-chart">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+        <script type="text/javascript">
+       // Load google charts
+       google.charts.load('current', {'packages':['corechart']});
+       google.charts.setOnLoadCallback(drawChart);
+
+       // Draw the chart and set the chart values
+       function drawChart() {
+       var data = google.visualization.arrayToDataTable([
+       ['Task', 'Hours per Day'],
+       ['Work', 8],
+       ['Work break', 4],
+       ['Lunch', 2],
+        ]);
+
+       // Optional; add a title and set the width and height of the chart
+       var options = {'title':'Average Day of Developer', 'width':550, 'height':400};
+
+       // Display the chart inside the <div> element with id="piechart"
+       var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+       chart.draw(data, options);
+     }
+     </script>
+</div>
+</div>
+</div>
+</div>
+<!--dashboard-->
+ <script type="text/javascript" src="javascript/sidebar.js"></script>
+
+   </body>
+   
+</html>
+

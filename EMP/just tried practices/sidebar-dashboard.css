@@ -1,0 +1,481 @@
+/*header starts here */
+body{
+    color: white;
+    margin: 0;
+    margin-right: 25px;
+    padding:0;
+    font-family: "Roboto", sans-serif;
+  }
+  /*for header tag*/
+  header{
+    z-index: 1;
+    position: fixed;
+    background: white;
+    padding: 20px;
+    width: calc(100% - 0%);
+    top: 0;
+    height: 30px;
+  }
+  /* our company logo*/
+  .logo img{
+      margin-top: -6px;
+      margin-left: 48px;
+      padding-top: 4px;
+      height: 40px;
+      background-color:none;
+  }
+  
+  /* For Right side's logout button */
+  .logout_btn{
+    padding: 5px;
+    background: #3498DB;
+    text-decoration: none;
+    float: right;
+    margin-top: -40px;
+    margin-right: 40px;
+    padding-top: 3px;
+    height:17px;
+    border-radius: 2px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    transition: 0.5s;
+    transition-property: background;
+  }
+  /*button is hovering by mouse motion*/
+  .logout_btn:hover{
+    background: #3498DB;
+  }
+  /*our most important sidebar starts here*/
+  .sidebar{
+    z-index: 1;
+    top: 0;
+    background: #2f323a;
+    margin-top: 70px;
+    padding-top: 7px;
+    position: fixed;
+    left: 0;
+    width: 250px;
+    height: calc(100% - 9%);
+    transition: 0.5s;
+    transition-property: left;
+    overflow-y: auto;
+  }
+  
+  .profile img{
+      padding: 10px;
+      display: block;
+      width: 100px;
+      height: 100px;
+      border-radius: 80%;
+      margin: 0 auto;
+  }
+  
+  .sidebar .profile_info h4{
+    color: #ccc;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    text-align: center;
+    color:#ccc;
+  }
+  /*for dashboard, table & timer*/
+  .sidebar a{
+    color: #fff;
+    display: block;
+    width: 100%;
+    line-height: 35px;
+    text-decoration: none;
+    padding-left: 40px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    transition-property: background;
+  }
+  
+  ul, li{
+    list-style-type:none;
+    margin: 0;
+    padding: 0;
+  }  
+  
+  .sidebar a:hover{
+    background: #3498DB; /*AV DEVS theme color*/
+  }
+  
+  /*code to change background color*/
+  li > a:focus {
+    background-color: rgba(137, 140, 141, 0.815);
+  }
+  
+  .sidebar i{
+    padding-right: 10px;
+  }
+  /* for sidebar button starts here */
+  label #sidebar_btn{
+    z-index: 1;
+    color: black; 
+    position: fixed;
+    cursor: pointer;
+    left: 25px;
+    font-size: 20px;
+    margin: 5px 0;
+    transition: 0.5s;
+    transition-property: color;
+  }
+
+  .sidebar-btn + label, .content {
+    transition: left 0.1s;
+  }
+  .sidebar-btn:checked + label {
+    left: 245px;
+  }
+
+  .sidebar-btn:checked ~ .content {
+    left: 230px;
+  }
+    
+
+   /*checkbox is hovering*/
+  label #sidebar_btn:hover{
+    color: #3498DB;
+  }
+  /*this is why we slide the sidebar and moves on given position*/
+  #check:checked ~ .sidebar{
+    left: -185px;
+  }
+  
+  #check:checked ~ .sidebar a span{
+    display: none;
+  }
+  
+  #check:checked ~ .sidebar a{
+    font-size: 20px;
+    margin-left: 165px;
+    width: 100%;
+  }
+  
+  #check:checked ~ .content{
+    margin-left: 60px;
+  }
+  
+  #check:checked ~ .sidebar .profile_info{
+    display: none;
+  }
+  
+  #check{
+    display: none;
+  }
+  
+  .content .card p{
+    background: #fff;  
+    padding: 15px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+  /* Responsive CSS */
+  @media screen and (max-width: 780px)
+  {
+    .sidebar{
+      display: none;
+    }
+  
+    #sidebar_btn{
+      display: none;
+    }
+  
+    .content{
+      margin-left: 0;
+      margin-top: 0;
+      padding: 10px 20px;
+      transition: 0s;
+    }
+  
+    #check:checked ~ .content{
+      margin-left: 0;
+    }
+  
+    .active{
+      display: block;
+    }
+  }
+  
+  .line{
+      border-bottom: 1px solid white;
+      font-size: 10px;
+      text-align: center;
+  }
+  
+  /*FOR A 1st TOGGLE STARTS HERE*/
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  /*assigning one line which is slider to create space to makeover toggle*/
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #21f34f;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #21f34f;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  /* Rounded sliders to be look like toggle design */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  
+  /*FOR A 2nd TOGGLE STARTS HERE*/
+  .switchs2 {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switchs2 input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  /*assigning one line which is slider to create space to makeover toggle*/
+  .sliders2 {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .sliders2:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .sliders2 {
+    background-color: rgb(255, 115, 0);
+  }
+  
+  input:focus + .sliders2 {
+    box-shadow: 0 0 1px rgb(255, 115, 0);
+  }
+  
+  
+  input:checked + .sliders2:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  /* Rounded sliders to be look like toggle design */
+  .sliders2.round {
+    border-radius: 34px;
+  }
+  
+  .sliders2.round:before {
+    border-radius: 50%;
+  }
+  
+  
+  /*Providing space to toggles*/
+  .container{
+    height: 75px;
+    width: 100%;
+  }   
+  /*printing timer*/
+  #display{
+    padding-top: 16px;
+    color: #ffffff;
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
+    margin: 0px auto;
+  }
+  
+  #display1{
+    padding-top: 15.5px;
+    color :#21f34f;
+    width : 100%;
+    font-size: 14px;
+    text-align: center;
+    margin: 0px auto;
+  }
+  
+/*this is for dashboard content*/
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+   
+* { 
+  box-sizing: border-box;
+  text-align: center;
+ }
+/*datepicker*/
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 20px;
+  text-align: center; 
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+  margin-left: 4.5em;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+    
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  height: 11em;
+  text-align: center;
+  color: white;
+  background-color: #2374e1;
+  border-radius: 4%; 
+}
+.card2 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    height: 11em;
+    text-align: center;
+    color: white;
+    background-color: #f00;
+    border-radius: 4%;
+  }
+  
+
+  element.style {
+    width: 295px;
+    height: 178px;
+    border-radius: 4%;
+}
+
+
+.flip-card {
+  background-color: transparent;
+  width: 295px;
+  height: 178px;
+  perspective: 1000px;
+  
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 3%;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: grey;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+   
+.pie-chart {
+    
+    margin-left: 22em;
+}
+
+    

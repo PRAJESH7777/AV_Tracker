@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Sidebar Dashboard</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="css/sidebar_calendar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+  </head>
+ 
+  <body>
+
+    <input type="checkbox" id="check">
+    <!--header area start-->
+          <header>
+             <label for="check">
+               <i class="fas fa-bars" id="sidebar_btn"></i>
+             </label>
+             
+             <div class="logo">
+               <img src="images/img.jpg" alt="" height="#" width="#">
+             </div> 
+             
+             <div class = "right_area">
+               <a href ='#' class = 'logout_btn'> Logout </a>
+             </div>
+          </header>
+    <!--header area end-->
+    <!--mobile navigation bar start-->
+        <div class="mobile_nav">
+            <div class="nav_bar">
+             <img src="images/User.jpeg" class="mobile_profile_image" alt="">
+             <i class="fa fa-bars nav_btn"></i>
+            </div>
+        
+            <div class="mobile_nav_items">
+
+                  <ul class="navbar-nav">
+                     <li class="nav-item"><a href="#" ><div class="fas fa-desktop" style="user-select:auto;"></div><span>&nbsp; Dashboard </span></a></li>
+                     <li class="nav-item"><a href="#" ><div class="fas fa-table" style="user-select:auto;"></div><span>&nbsp; Tables </span></a></li> 
+                  </ul> 
+            
+            </div>
+        </div>
+
+       
+
+    <!--mobile navigation bar end-->
+    <!--sidebar start-->
+ <div class="sidebar">
+          <div class="profile_info">
+             <img src="images/User.jpeg" class="profile_image" alt="">
+             <h4>User name</h4>
+          </div>
+          <ul class="navbar-nav">
+            <li class="nav-item"><a href="#" ><div class="fas fa-desktop" style="user-select:auto;"></div><span>&nbsp; Dashboard </span></a></li>
+            <li class="nav-item"><a href="#" ><div class="fas fa-table" style="user-select:auto;"></div><span>&nbsp; Tables </span></a></li>
+         </ul>  
+      
+          
+
+    <div class="line" id="hide" >
+          <div class="container">
+              <h3 style="color:#fff">On / Off</h3>
+               <label class="switch" onclick="startStp_onoff(); stp()" id="stop">
+                    <input type="checkbox" >   
+                 <span class="slider round"  onclick="settimer(); opentog()" id="tog1-btn"></span>
+               </label>
+          </div>
+          </div>
+      
+       <div class="line" id="open" style="display:none">
+           <div class="container">
+               <h3 style="color:#fff">Pause / Resume</h3>
+                <label class="switchs2" onclick="startStp_paures()">
+                     <input type="checkbox" >
+                     <span class="sliders2 round" onclick="settimer(); startStp_onoff2(); hidebtn(); " id="tog2-btn"></span>
+                </label>
+          </div>
+       </div>
+      
+       <div class="container">
+          <div id="display"  style="color:#21f34f">
+            00:00:00
+          </div>
+
+          <div id="display5" style="color:orange">
+               00:00:00
+             </div>
+
+
+          <div class="buttons" hidden>
+               <button id="startStop" onclick="startStp_onoff()">Start</button> 
+          </div> 
+          <div class="buttons" hidden>
+               <button id="startStop" onclick="startStp_onoff2()">Start</button> 
+          </div>  
+        </div> 
+
+<!----------------------------------------------------------------------------------->
+
+       <div hidden>
+               <div class="line" id="hide" >
+                     <div class="container">
+                          <h3 style="color:#fff">On / Off</h3>
+                          <label class="switch" onclick="startStp_onoff2(); " id="stop">
+                            <input type="checkbox" >   
+                            <span class="slider round"  onclick="settimer2(); opentog2()" id="tog1-btn2"></span>
+                          </label>
+                     </div>
+               </div>
+ 
+               <div class="line" id="open2" style="display:none">
+                      <div class="container">
+                              <h3 style="color:#fff">Pause / Resume</h3>
+                              <label class="switchs2" onclick="startStp_paures2(); startStp_onoff3()">
+                                 <input type="checkbox" >
+                                 <span class="sliders2 round" onclick="settimer2(); hidebtn2()" id="tog2-btn"></span>
+                              </label>
+                       </div>
+                </div>
+ 
+              <div class="container">
+                   <div id="display2">00:00:00 </div>
+                   <div id="display3">00:00:00 </div>
+
+             <div id="display1"></div>
+
+              <div class="buttons" hidden>
+                <button id="startStop2" onclick="startStp_onoff2()">Start</button> 
+              </div>  
+        </div> 
+    </div>
+</div>
+
+<!--sidebar end-->
+<!--calendar content-->
+<div class="content">
+    <div class="card">
+
+       
+    <div id="container_">
+        <div id="months">
+          <div id="monthDisplay"></div>
+          <div>
+            <button class="buttonz" id="prevButton">Previous</button>
+            <button class="buttonz" id="nextButton">Next</button>
+          </div>
+        </div>
+
+        <div id="weekdays">
+          <div style="color:#d36c6c">Sunday</div>
+          <div>Monday</div>
+          <div>Tuesday</div>
+          <div>Wednesday</div>
+          <div>Thursday</div>
+          <div>Friday</div>
+          <div style="color:#d36c6c">Saturday</div>
+        </div>
+
+        <div id="calendar">
+           <!-- <div id="totalworktime">7:20:00</div>   
+           <div id="totalbreaktime">1:11:00</div> -->
+        </div>
+    </div>
+<!--popup for adding event-->
+      <div id="newEventModal">
+            <h2>New Event</h2>
+
+            <input id="eventTitleInput" placeholder="Event Title" />
+
+            <button id="saveButton">Save</button>
+            <button id="cancelButton">Cancel</button>
+      </div>
+<!--popup for adding event end-->   
+<!--popup for deleting event-->
+     <div id="deleteEventModal">
+           <h2>Event</h2>
+
+           <p id="eventText"></p>
+
+           <button id="deleteButton">Delete</button>
+           <button id="closeButton">Close</button>
+     </div>
+<!--popup for deleting event end-->
+     <div id="modalBackDrop"></div>
+
+    </div>
+</div>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $('.nav_btn').click(function(){
+            $('.mobile_nav_items').toggleClass('active');
+          });
+        });
+      </script>
+       <script src="calendar/calender_employee.js"></script>
+      <script type="text/javascript" src="javascript/sidebar.js"></script>
+  </body>
+</html>
